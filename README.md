@@ -1,66 +1,34 @@
-## Foundry
+## Smart Contract Security #4: Private State Variable
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+### Command
 
-Foundry consists of:
+Sử dụng lệnh command để chạy các tính năng như trong video đã đề cập.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
+1. Compile
 ```shell
-$ forge build
+$ forge compile
 ```
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
+2. Chạy mạng Anvil Chain (local)
 
 ```shell
 $ anvil
 ```
 
-### Deploy
+3. Mở một terminal mới, chạy lệnh deploy lên mạng Anvil Chain
 
 ```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+$ forge script script/DeployPasswordStore.s.sol:DeployPasswordStore --rpc-url http://127.0.0.1:8545 --private-key <private-key> --broadcast
 ```
 
-### Cast
-
+4. Để xem storage của contract PasswordStore đã deploy, chạy command `cast storage`
 ```shell
-$ cast <subcommand>
+$ cast storage <địa-chỉ-contract> <vị-trí-muốn-xem> --rpc-url http://127.0.0.1:8545
 ```
 
-### Help
-
+5. Để xem dữ liệu dưới dạng string chạy command `cast parse-bytes32-string`
 ```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+$ cast parse-bytes32-string <hex-data>
 ```
+
+
